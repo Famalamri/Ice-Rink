@@ -26,6 +26,16 @@ public class GunSystem : MonoBehaviour
     public GameObject muzzleFlash, bulletHoleGraphic;
     public TextMeshProUGUI text;
 
+    //audio
+    AudioSource pistolSound;
+
+    void Start()
+    {
+        bulletsLeft = magazineSize;
+        readyToShoot = true;
+        pistolSound = GetComponent<AudioSource>();
+    }
+
 
     private void MyInput()
     {
@@ -40,6 +50,9 @@ public class GunSystem : MonoBehaviour
         {
             bulletsShot = bulletsPerTap;
             Shoot();
+
+            //audio
+            pistolSound.Play();
         }
     }
     private void Shoot()
@@ -92,12 +105,6 @@ public class GunSystem : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         reloading = false;
-    }
-
-    void Start()
-    {
-        bulletsLeft = magazineSize;
-        readyToShoot= true;
     }
 
     // Update is called once per frame
