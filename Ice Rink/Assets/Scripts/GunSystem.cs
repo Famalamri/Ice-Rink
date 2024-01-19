@@ -62,8 +62,8 @@ public class GunSystem : MonoBehaviour
                 //rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
         }
         
-        //Graphics
-        Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 180, 0));
+        //Graphics, bullet holes and muzzle flash
+        Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
         
         bulletsLeft--;
